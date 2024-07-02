@@ -10,8 +10,8 @@ const author=sequilize.define(
     {
         id:{
             type:DataTypes.INTEGER,
-            allowNull:false,
-            primaryKey:true
+            primaryKey:true,
+            autoIncrement:true
         },
         name:{
             type:DataTypes.STRING

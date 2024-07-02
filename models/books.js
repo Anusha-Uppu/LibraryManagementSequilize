@@ -6,7 +6,8 @@ const book=sequelize.define(
     {
         id:{
             type:DataTypes.INTEGER,
-            primaryKey:true
+            primaryKey:true,
+            autoIncrement:true
         },
         title:{
             type:DataTypes.STRING,

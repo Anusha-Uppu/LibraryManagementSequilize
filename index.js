@@ -3,6 +3,9 @@ const sequelize=new Sequelize('library','anusha','anu@123',{host:'localhost',dia
 
 const author=require('./models/authors');
 const Book=require('./models/books');
+const member=require('./models/members');
+const loan=require('./models/loans');
+const reservation=require('./models/reservations');
 
 async function main(){
     try{
