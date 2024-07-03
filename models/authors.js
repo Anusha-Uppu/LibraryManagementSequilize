@@ -1,7 +1,9 @@
 // const { table } = require('console');
 // const { hostname } = require('os');
 const { Sequelize, DataTypes } = require('sequelize');
+// require("dotenv").config();
 
+ 
 
 const sequilize=new Sequelize('library','anusha','anu@123',{hostname:'localhost',dialect:'postgres'});
 

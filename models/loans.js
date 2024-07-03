@@ -1,5 +1,5 @@
 const {Sequelize, DataTypes}=require('sequelize');
-const sequelize=new Sequelize('libreary','anusha','anu@123',{host:'localhost',dialect:'postgres'})
+const sequelize=new Sequelize('library','anusha','anu@123',{host:'localhost',dialect:'postgres'})
 const book = require('./books');
 const member = require('./members');
 const loan=sequelize.define(
