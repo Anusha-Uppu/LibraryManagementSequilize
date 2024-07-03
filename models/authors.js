@@ -2,10 +2,10 @@
 // const { hostname } = require('os');
 const { Sequelize, DataTypes } = require('sequelize');
 // require("dotenv").config();
-
+const{connection}=require('../Connection/connection')
  
 
-const sequilize=new Sequelize('library','anusha','anu@123',{hostname:'localhost',dialect:'postgres'});
+const sequilize=connection;
 
 const author=sequilize.define(
     'author',

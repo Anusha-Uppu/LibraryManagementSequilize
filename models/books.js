@@ -1,5 +1,6 @@
 const {Sequelize, DataTypes}=require('sequelize');
-const sequelize=new Sequelize('library','anusha','anu@123',{host:'localhost',dialect:'postgres'});
+const {connection}=require('../Connection/connection');
+const sequelize=connection;
 const author=require('./authors')
 const book=sequelize.define(
     'book',

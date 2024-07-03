@@ -2,9 +2,11 @@ const {Sequelize, DataTypes}=require('sequelize');
 const book = require('./books');
 const member = require('./members');
 
-const sequileze=new Sequelize('library','anusha','anu@123',{host:'localhost',dialect:'postgres'});
+const{connection}=require('../Connection/connection')
+const sequelize=connection;
 
-const reservation=sequileze.define(
+
+const reservation=sequelize.define(
     'reservation',
     {
         id:{
