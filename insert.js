@@ -1,0 +1,70 @@
+ exports.authorslist=[
+    {
+        name:'Anusha',
+        birth_year:2003,
+        nationality:'India'
+    },
+    {
+        name:'Rekha',
+        birth_year:2002,
+        nationality:'Us'
+    },
+    {
+        name:'Varun',
+        birth_year:2004,
+        nationality:'Uzbekistan'
+    },
+    {
+        name:'Vinay',
+        birth_year:1990,
+        nationality:'Bhutan'
+    },
+    {
+        name:'Anoosha',
+        birth_year:2002,
+        nationality:'China'
+    }
+]
+exports.books=[
+    {
+        title:'Ramayan',
+        authorId:4,
+        genre:'Mythology',
+        isbn:1234,
+        publication_year:2000
+    },
+    {
+        title:'die with my die',
+        authorId:3,
+        genre:'Biography',
+        isbn:2345,
+        publication_year:2040
+    },
+    {
+        title:'Do Epic shit',
+        authorId:5,
+        genre:'Motivation',
+        isbn:9898,
+        publication_year:2036
+    }
+]
+exports.memberslist=[
+    {
+        name:'Anoosha',
+        address:'Vemulavada',
+        phone_number:'9448854408',
+        email:'anoosha@gmail.com',
+    },
+    {
+        name:'Rekha',
+        address:'Karimnagar',
+        phone_number:'5498475904',
+        email:'rekha@gmail.com'
+    },
+    {
+        name:'Anusha',
+        address:'Tokyo',
+        phone_number:'7702041588',
+        email:'anusha@gmail.com'
+    }
+]
