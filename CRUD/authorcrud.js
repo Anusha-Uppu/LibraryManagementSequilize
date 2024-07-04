@@ -54,21 +54,21 @@ async function updation(attribute, pastvalue,presentvalue){
 }
 async function deletion(attribute, value){
  if(attribute==='name'){
-    await  tablename.destroy({
+    await  author.destroy({
         where:{
          name : value,
         }
        });
  }
  if(attribute==='birth_year'){
-    await  tablename.destroy({
+    await  author.destroy({
         where:{
          birth_year:value,
         }
        });
  }
  if(attribute==='nationality'){
-    await  tablename.destroy({
+    await  author.destroy({
         where:{
         nationality: value,
         }
