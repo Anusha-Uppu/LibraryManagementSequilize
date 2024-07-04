@@ -11,8 +11,40 @@ const data=[{
     birth_year:2003,
     nationality:'Pakisthan'
 }]
-creation(data);
+// creation(data);
+async function reading(attribute, value){
+    switch(attribute){
+        case 'name':
+         const authors=await author.findAll({
+                where:{
+                    name:value,
+                }
+          });
 
+          console.table(authors.map(a=>a.toJSON()));
+          break;
+        case 'birth_year':
+          let authorslist=await author.findAll({
+            where:{
+                birth_year:value,
+            }
+          })
+          console.table(authorslist.map(a=>a.toJSON()));
+          break;
+        case 'nationality' :
+            let authorsl=await author.findAll({
+                where:{
+                    nationality:value,
+                }
+            })
+            console.table(authorsl.map(a=>a.toJSON()));
+        break;
+        default:
+            console.log('---please provide correct values----');
+    }
+ 
+}
+reading('nationality','Uzbekistan');
 async function updation(attribute, pastvalue,presentvalue){
     if(attribute==='name'){
         await author.update(

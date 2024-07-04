@@ -5,7 +5,42 @@ async function creation(data){
     await member.bulkCreate(data);
     console.lof('data is inserted into the members table');
 }
-
+async function  reading(attribute,value){
+    switch(attribute){
+        case 'name':
+            const l1=await member.findAll({
+                where:{
+                    name:value,
+                }
+            })
+            console.table(l1.map(a =>a.toJSON()));
+            break;
+        case 'address' :
+            const l2=await member.findAll({
+                where:{
+                    address:value,
+                }
+            })
+            console.table(l2.map(a=>a.toJSON()));
+            break;
+        case 'phonbe_number':
+            const l3=await member.findAll({
+                where:{
+                    phone_number:value,
+                }
+            })
+            console.table(l3.map(a=>a.toJSON()));
+            break;
+        case 'email':
+            const l4=await member.findAll({
+               email : value,
+            })
+            console.table(l4.map(a=>a.toJSON()));
+            break;
+        default:
+            console.log('---please provide correct values----');
+    }
+}
 async function updation(attribute, pastvalue,presentvalue){
  switch(attribute){
     case 'name':

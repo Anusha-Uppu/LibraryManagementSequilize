@@ -5,6 +5,53 @@ async function creation(data){
     await book.bulkCreate(data);
     console.log('data is inserted into the books table');
 }
+async function reading(attribute,value){
+    switch(attribute){
+        case 'title':
+            const l1=await book.findAll({
+                where:{
+                    title:value,
+                }
+            });
+            console.table(l1.map(a=>a.toJSON()));
+            break;
+        case 'authorId':
+            const l2=await book.findAll({
+                where:{
+                    authorId:value,
+                }
+            })
+            console.table(l2.map(a=>a.toJSON()));
+            break;
+        case 'genre' :
+            const l3=await book.findAll({
+                where:{
+                    genre:value,
+                }
+            })
+            console.table(l3.map(a => a.toJSON()));
+            break;
+        case 'isbn' :
+            const l4=await book.findAll({
+                where:{
+                    isbn:value,
+                }
+            })
+            console.table(l4.map(a =>a.toJSON()));
+            break;
+        case 'publication_year':
+            const l5=await book.findAll({
+                where:{
+                    publication_year:value,
+                }
+            })
+            console.table(l5.map(a=>a.toJSON()));
+            break;
+        default:
+            console.log('----please provide correct values-----');
+        
+    }
+}
 async function updation(attribute,pastvalue,presentvalue){
     if(attribute==='title'){
      

@@ -4,7 +4,36 @@ async function creation(data){
     await reservation.bulkCreate(data);
     console.log('---data is inserted---');
 }
-
+async function  reading(attribute,value){
+    switch(attribute){
+        case 'book_id':
+            const l1=await reservation.findAll({
+                where:{
+                    book_id:value,
+                }
+            })
+            console.table(l1.map(a =>a.toJSON()));
+            break;
+        case 'member_id' :
+            const l2=await reservation.findAll({
+                where:{
+                    member_id:value,
+                }
+            })
+            console.table(l2.map(a=>a.toJSON()));
+            break;
+        case 'reservation_date':
+            const l3=await reservation.findAll({
+                where:{
+                    reservation_date:value,
+                }
+            })
+            console.table(l3.map(a=>a.toJSON()));
+            break;
+        default:
+            console.log('---please provide correct values----');
+    }
+}
 async function updation(attribute,pastvalue,presentvalue){
     switch(attribute){
         case 'book_id':

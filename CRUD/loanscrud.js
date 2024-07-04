@@ -1,9 +1,47 @@
+const { where } = require("sequelize");
 const loan = require("../models/loans");
 
 
 async function creation(data){
     await loan.bulkCreate(data);
 }
+async function  reading(attribute,value){
+    switch(attribute){
+        case 'book_id':
+            const l1=await loan.findAll({
+                where:{
+                    book_id:value,
+                }
+            })
+            console.table(l1.map(a =>a.toJSON()));
+            break;
+        case 'member_id' :
+            const l2=await loan.findAll({
+                where:{
+                    member_id:value,
+                }
+            })
+            console.table(l2.map(a=>a.toJSON()));
+            break;
+        case 'loan_date':
+            const l3=await loan.findAll({
+                where:{
+                    loan_date:value,
+                }
+            })
+            console.table(l3.map(a=>a.toJSON()));
+            break;
+        case 'due_date':
+            const l4=await loan.findAll({
+                due_date : value,
+            })
+            console.table(l4.map(a=>a.toJSON()));
+            break;
+        default:
+            console.log('---please provide correct values----');
+    }
+}
+
 async function updation(attribute,pastvalue,presentvalue){
     switch(attribute){
         case 'book_id':
