@@ -3,7 +3,7 @@ const book = require("./models/books");
 const loan = require("./models/loans");
 const member = require("./models/members");
 const reservation = require("./models/reservations");
-
+async function assosiations(){
 book.belongsTo(author,{foreignKey:'authorId'});
 author.hasMany(book,{foreignKey:'authorId'});
 // member.belongsToMany(book,{through:loan});
@@ -19,3 +19,4 @@ reservation.belongsTo(member,{foreignKey:'member_id'});
 // Books and Reservation
 book.hasMany(reservation,{foreignKey:'book_id'});
 reservation.belongsTo(book,{foreignKey:'book_id'});
+}
