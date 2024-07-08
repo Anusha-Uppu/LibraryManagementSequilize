@@ -2,6 +2,10 @@ const {Sequelize, DataTypes}=require('sequelize');
 // const sequelize=new Sequelize('library','anusha','anu@123',{host:'localhost',dialect:'postgres'})
 const {connection}=require('./Connection/connection')
 const sequelize=connection;
+const express=require('express');
+
+const app=express();
+
 
 const book=require('./models/books');
 const author=require('./models/authors');
@@ -13,6 +17,12 @@ const {authorslist}=require('./insert');
 const {books}=require('./insert');
 const {memberslist}=require('./insert')
 
+const authorRoutes=require('./routes/authors.routes');
+const bodyParser = require('body-parser');
+const bookRoutes=require('./routes/books.routes')
+const memberRoutes=require('./routes/members.routes')
+const loanRoutes=require('./routes/loans.routes');
+const reservationRoutes=require('./routes/reservation.routes')
 
 async function main(){
     try{
@@ -39,3 +49,13 @@ async function main(){
     console.log('reservation table is created');
 }
 main();
+app.use('/api/ping', ((req, res) => {  
+    res.json({ message: 'pong' });
+}));
+app.use(bodyParser.json());
+app.use('/api/authors',authorRoutes);
+app.use('/api/books',bookRoutes);
+app.use('/api/members',memberRoutes);
+app.use('/api/loans',loanRoutes);
+app.use('/api/reservations',reservationRoutes)
+app.listen(3000,()=>console.log('Server is running in the port no 3000'));

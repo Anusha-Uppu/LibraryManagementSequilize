@@ -20,3 +20,8 @@ reservation.belongsTo(member,{foreignKey:'member_id'});
 book.hasMany(reservation,{foreignKey:'book_id'});
 reservation.belongsTo(book,{foreignKey:'book_id'});
 }
+book.findAll({
+    order: [
+          ['publication_year','ASC'],]
+    })
+// module.exports=assosiations;n
