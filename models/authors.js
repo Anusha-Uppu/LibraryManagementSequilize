@@ -23,7 +23,16 @@ const author=sequilize.define(
         },
         nationality:{
             type:DataTypes.STRING
-        }
+        },
+       
+    },
+    {
+        indexes:[
+            {
+                unique:true,
+                fields:['id']
+            }
+        ]
     }
 )
 module.exports=author;

@@ -2,21 +2,27 @@
 const express=require('express');
 const router=express.Router();
 const Author=require('../models/authors')
-const bodyParser=require('body-parser')
+const bodyParser=require('body-parser');
+const book = require('../models/books');
 router.get('/', async (req, res) => {
     try {
         // Fetch all authors include books
         const authors = await Author.findAll();
         if (authors.length === 0) return res.status(404).json({ message: "No Authors Found" });
-        res.json({Authors: authors});
+        res.render('authors',{authors})
+        // res.json({Authors: authors});
     } catch (err) {
         res.status(500).json({message: err.message});
     }
 });
 // Get one author
-router.get('/:id', async (req, res) => {
+router.get('/:name', async (req, res) => {
     try {
-        const author = await Author.findByPk(req.params.id);
+        const author = await Author.findAll({
+            where:{
+                name:req.params.name,
+            }
+    });
         if (author === null) {
             return res.status(404).json({ message: "Author Not Found" });
         }
@@ -25,6 +31,16 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({message: err.message});
     }
 });
+//Post deatails of many authors
+// router.post('/bulkcreate',async(req,res)=>{
+//     try{
+//         const authors=await Author.bulkCreate(req.body);
+//         res.json(authors);
+//     }
+//     catch(err){
+//         res.send('eeror'+err);
+//     }
+// })
 
 // Create a new author
 router.post('/', async (req, res) => {
@@ -36,7 +52,7 @@ router.post('/', async (req, res) => {
              nationality:req.body.nationality
 
         }]
-        const author = await Author.bulkCreate(aa);
+        const author = await Author.create(aa);
         res.json(author);
     } catch (err) {
         res.status(400).json({message: err.message});

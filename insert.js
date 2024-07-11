@@ -68,3 +68,29 @@ exports.memberslist=[
         email:'anusha@gmail.com'
     }
 ]
+exports.loansList=[
+    {
+        book_id:1,
+        member_id:3,
+        loan_date:'06-05-2024',
+        due_date:'10-05-2024',
+    },
+    {
+        book_id:2,
+        member_id:1,
+        loan_date:'06-05-2024',
+        due_date:'10-05-2024'
+    }
+]
+exports.reservationList=[
+    {
+        book_id:2,
+        member_id:1,
+        reservation_date:'05-05-2024'
+    },
+    {
+        book_id:1,
+        member_id:3,
+        reservation_date:'05-05-2024'
+    }
+]

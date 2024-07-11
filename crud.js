@@ -1,4 +1,4 @@
-const { where } = require("sequelize");
+const { where, Sequelize } = require("sequelize");
 const author = require("./models/authors");
 const loan = require("./models/loans");
 
@@ -7,18 +7,18 @@ async function creation(tablename,records){
     await tablename.bulkCreate(records);
 }
 
-async function updation(tablename,pastvalue, presentvalue){
-    console.log('----UPDATION-----');
-    await tablename.update(
-        {name:presentvalue},
-        {
-            where:{
-                name:pastvalue,
-            }
-        }
-    )
-    console.log(tablename+' updated');
-}
+// async function updation(tablename,pastvalue, presentvalue){
+//     console.log('----UPDATION-----');
+//     await tablename.update(
+//         {name:presentvalue},
+//         {
+//             where:{
+//                 $$:
+//             }
+//         }
+//     )
+//     console.log(tablename+' updated');
+// }
 // async function deletion(tablename, attribute, value){
   
 //    await  tablename.destroy({
@@ -29,12 +29,11 @@ async function updation(tablename,pastvalue, presentvalue){
 // }
 
 async function deletion(tablename, attribute, value){
-   let val1=attribute;
-
+//    let val1=attribute;
+const whereClause={};
+    whereClause[attribute]=value;
     await  tablename.destroy({
-     where:{
-      val1 : value,
-     }
+     where:whereClause
     });
  }
 const data1=[{

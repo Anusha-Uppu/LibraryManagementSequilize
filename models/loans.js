@@ -34,6 +34,14 @@ const loan=sequelize.define(
             type:DataTypes.DATE,
             allowNull:false
         }
+    },
+    {
+        indexes:[
+            {
+                fields:['book_id','member_id','loan_date']
+
+            }
+        ]
     }
 )
 module.exports=loan;

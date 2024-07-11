@@ -3,9 +3,10 @@ const {Sequelize, DataTypes}=require('sequelize');
 const {connection}=require('./Connection/connection')
 const sequelize=connection;
 const express=require('express');
+const authorInteface=require('./')
 
 const app=express();
-
+const assosiations=require('./assosiations')
 
 const book=require('./models/books');
 const author=require('./models/authors');
@@ -15,7 +16,9 @@ const reservation=require('./models/reservations');
 
 const {authorslist}=require('./insert');
 const {books}=require('./insert');
-const {memberslist}=require('./insert')
+const {memberslist}=require('./insert');
+const {loansList}=require('./insert');
+const {reservationList}=require('./insert')
 
 const authorRoutes=require('./routes/authors.routes');
 const bodyParser = require('body-parser');
@@ -33,20 +36,27 @@ async function main(){
     }
     await author.sync({force:true});
     console.log('author table is created');
-    await author.bulkCreate(authorslist);
-    console.log('Data inserted into the authors');
     await book.sync({force:true});
     console.log('Book table is created');
-    await book.bulkCreate(books);
-    console.log('Data inserted into the books');
     await member.sync({force:true});
     console.log('Members table is created');
-    await member.bulkCreate(memberslist);
-    console.log('Data inserted into the memebers table');
     await loan.sync({force:true});
     console.log('Loan table is created');
     await reservation.sync({force:true});
     console.log('reservation table is created');
+    await assosiations();
+    console.log('associations are made');
+    await author.bulkCreate(authorslist);
+    console.log('Data inserted into the authors');
+    await book.bulkCreate(books);
+    console.log('Data inserted into the books');
+    await member.bulkCreate(memberslist);
+    console.log('Data inserted into the memebers table');
+    await reservation.bulkCreate(reservationList);
+    console.log('data to the reservations is added');
+    await loan.bulkCreate(loansList);
+    console.log('Data to the loans table is added');
+
 }
 main();
 app.use('/api/ping', ((req, res) => {  
